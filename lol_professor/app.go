@@ -6,7 +6,12 @@ import (
 	"lol_professor/backend/automation"
 	"time"
 	"lol_professor/backend/api/handlers"
+	"github.com/gin-gonic/gin"
+	"lol_professor/backend/api"
 )
+
+
+var Gin_ctx *gin.Context
 
 // App struct
 type App struct {
@@ -31,7 +36,14 @@ func reverseSlice[T any](s []T) {
 func (a *App) startup(ctx context.Context) {
 	// Perform your setup here
 	a.ctx = ctx
+	r := gin.Default()
+	r.Use(handlers.Cors())
+
+	// 初始化路由
+	api.InitRoutes(r)
 	go automation.StartAutomation()
+	// 启动服务
+	r.Run(":11451") // 在 11451 端口上运行
 }
 
 // domReady is called after front-end resources have been loaded
