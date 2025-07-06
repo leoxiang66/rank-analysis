@@ -22,7 +22,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:            "ROS Sensor Information",
+		Title:            "LOL Professor",
 		Width:            1024,
 		Height:           768,
 		Assets:           assets,

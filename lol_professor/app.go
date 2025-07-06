@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"lol_professor/backend/automation"
+	"time"
+	"lol_professor/backend/api/handlers"
 )
 
 // App struct
@@ -52,4 +54,12 @@ func (a *App) shutdown(ctx context.Context) {
 // Greet returns a greeting for the given name
 func (a *App) Info(name string) {
 	fmt.Println(name)
+}
+
+
+func (a *App) waitOnClient(){
+	for {
+		time.Sleep(time.Second)
+		handlers.GetSummonerAndRank()
+	}
 }
