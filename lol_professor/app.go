@@ -72,6 +72,6 @@ func (a *App) Info(name string) {
 func (a *App) waitOnClient(){
 	for {
 		time.Sleep(time.Second)
-		handlers.GetSummonerAndRank()
+		// handlers.GetSummonerAndRank()
 	}
 }
